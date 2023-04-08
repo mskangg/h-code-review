@@ -15,4 +15,8 @@ public class Car {
             distance++;
         }
     }
+
+    public void print() {
+        System.out.println("-".repeat(distance));
+    }
 }

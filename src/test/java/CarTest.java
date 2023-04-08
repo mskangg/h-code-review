@@ -1,5 +1,8 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
@@ -25,5 +28,18 @@ public class CarTest {
         car1.move(0);
         car1.move(1);
         assertThat(car1.getDistance()).isEqualTo(0);
+    }
+
+    @Test
+    public void 자동차_거리_출력() {
+        OutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+
+        Car car1 = new Car();
+        car1.move(5);
+        car1.move(9);
+        car1.print();
+        assertThat(out.toString().trim()).isEqualTo("--");
+
     }
 }
