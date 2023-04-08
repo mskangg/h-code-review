@@ -18,4 +18,12 @@ public class CarTest {
         car1.move(9);
         assertThat(car1.getDistance()).isEqualTo(2);
     }
+
+    @Test
+    public void 자동차_멈춤() {
+        Car car1 = new Car();
+        car1.move(0);
+        car1.move(1);
+        assertThat(car1.getDistance()).isEqualTo(0);
+    }
 }
