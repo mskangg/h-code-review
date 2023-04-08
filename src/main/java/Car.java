@@ -9,4 +9,10 @@ public class Car {
     public int getDistance() {
         return distance;
     }
+
+    public void move(int number) {
+        if (number >= 4) {
+            distance++;
+        }
+    }
 }
