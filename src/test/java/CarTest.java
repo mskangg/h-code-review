@@ -27,6 +27,7 @@ public class CarTest {
         Car car1 = new Car();
         car1.move(0);
         car1.move(1);
+
         assertThat(car1.getDistance()).isEqualTo(0);
     }
 
@@ -39,7 +40,7 @@ public class CarTest {
         car1.move(5);
         car1.move(9);
         car1.print();
-        assertThat(out.toString().trim()).isEqualTo("--");
 
+        assertThat(out.toString().trim()).isEqualTo("--");
     }
 }
