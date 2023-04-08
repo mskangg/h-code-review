@@ -9,5 +9,5 @@ public class Random {
 
     public int getNumber() {
         return random.nextInt(MAX+1);
-    }//0에서9사이
+    }
 }
