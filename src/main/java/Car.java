@@ -11,18 +11,14 @@ public class Car {
         random = new Random();
     }
 
-    public int getDistance() {
-        return distance;
-    }
-
     public void move(int number) {
         if (number >= THRESHOLD) {
             distance++;
         }
     }
 
-    public void print() {
-        System.out.println(DISTANCE_CHARACTER.repeat(distance));
+    public String getDistString() {
+        return DISTANCE_CHARACTER.repeat(distance);
     }
 
     public void moveRandomly() {
