@@ -24,7 +24,9 @@ public class RacingGame {
     }
 
     public void move() {
-        cars.forEach(Car::moveRandomly);
+        for (Car car : cars) {
+            car.moveRandomly();
+        }
     }
 
     public void run() {
