@@ -11,7 +11,7 @@
 
 * [텍스트와 이미지로 살펴보는 온라인 코드 리뷰 과정](https://github.com/next-step/nextstep-docs/tree/master/codereview)
 
-## 기능 목록 및 commit 로그 요구사항
+## [자동차 경주 - step1] 기능 목록 및 commit 로그 요구사항
 
 1. 자동차 객체와 자동차 객체에 대한 테스트 코드
 2. 자동차 경주 게임 객체와 자동차 경주 게임 객체에 대한 테스트 코드
