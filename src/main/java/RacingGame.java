@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RacingGame {
 
@@ -44,6 +45,13 @@ public class RacingGame {
             move();
             record();
         }
+    }
+
+    public List<Car> getWinners() {
+        Car winner = Collections.max(cars);
+        return cars.stream()
+                .filter(car -> car.compareTo(winner) == 0)
+                .collect(Collectors.toList());
     }
 
     private void record() {

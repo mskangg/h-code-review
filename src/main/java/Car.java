@@ -1,6 +1,6 @@
 import exception.NameLengthException;
 
-public class Car {
+public class Car implements Comparable<Car> {
 
     public final static String DEFAULT_NAME = "기본이름";
     private final static String DISTANCE_CHARACTER = "-";
@@ -44,5 +44,10 @@ public class Car {
 
     public void moveRandomly() {
         move(random.getNumber());
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(this.distance, o.distance);
     }
 }

@@ -23,4 +23,11 @@ public class RacingGameTest {
                 .contains("G80 : ")
                 .contains("G90 : ");
     }
+
+    @Test
+    public void 우승자_반환() {
+        RacingGame racingGame = new RacingGame(5, "G70", "G80", "G90");
+        racingGame.run();
+        assertThat(racingGame.getWinners()).isNotEmpty();
+    }
 }
