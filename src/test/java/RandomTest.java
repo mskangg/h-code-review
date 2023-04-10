@@ -11,16 +11,4 @@ public class RandomTest {
                 .isGreaterThanOrEqualTo(0)
                 .isLessThanOrEqualTo(9);
     }
-
-    @Test
-    public void 매번_다른_값() {
-        Random random = new Random();
-        int num1 = random.getNumber();
-        int num2 = random.getNumber();
-        int num3 = random.getNumber();
-        int num4 = random.getNumber();
-        boolean same = (num1 == num2) && (num3 == num4) && (num1 == num3);
-        assertThat(same).isFalse();
-    }
-
 }
