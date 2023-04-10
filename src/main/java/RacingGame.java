@@ -1,5 +1,5 @@
-import exception.NameCountException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RacingGame {
@@ -11,29 +11,20 @@ public class RacingGame {
     private int remainingMoves;
 
     public RacingGame(int carCount, int remainingMoves) {
+        this(remainingMoves, Collections.nCopies(carCount, Car.DEFAULT_NAME));
+    }
+
+    public RacingGame(int remainingMoves, String... names) {
+        this(remainingMoves, List.of(names));
+    }
+
+    public RacingGame(int remainingMoves, List<String> names) {
         this.remainingMoves = remainingMoves;
         this.gameRecord = new StringBuilder();
 
         cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car());
-        }
-    }
-
-    public RacingGame(int carCount, int remainingMoves, String... names) {
-        validNames(carCount, names);
-        this.remainingMoves = remainingMoves;
-        this.gameRecord = new StringBuilder();
-
-        cars = new ArrayList<>();
-        for (int i = 0; i < carCount; i++) {
-            cars.add(new Car(names[i]));
-        }
-    }
-
-    private static void validNames(int carCount, String[] names) {
-        if (names.length != carCount) {
-            throw new NameCountException();
+        for (String name : names) {
+            cars.add(new Car(name));
         }
     }
 

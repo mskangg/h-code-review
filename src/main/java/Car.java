@@ -2,10 +2,10 @@ import exception.NameLengthException;
 
 public class Car {
 
+    public final static String DEFAULT_NAME = "기본이름";
     private final static String DISTANCE_CHARACTER = "-";
     private final static int THRESHOLD = 4;
     private final static int INITIAL_DISTANCE = 0;
-    private final static String DEFAULT_NAME = "기본이름";
     private final static int NAME_MAX_LEN = 5;
     private final Random random;
     private final String name;
