@@ -7,6 +7,7 @@ public class RacingGame {
 
     public static final char NEW_LINE = '\n';
     public static final String DELIMITER = " : ";
+    public static final String DISTANCE_CHARACTER = "-";
     private final List<Car> cars;
     private final StringBuilder gameRecord;
     private int remainingMoves;
@@ -58,7 +59,7 @@ public class RacingGame {
         for (Car car : cars) {
             gameRecord.append(car.getName())
                     .append(DELIMITER)
-                    .append(car.getDistString())
+                    .append(DISTANCE_CHARACTER.repeat(car.getDistance()))
                     .append(NEW_LINE);
         }
         gameRecord.append(NEW_LINE);

@@ -9,16 +9,16 @@ public class CarTest {
     @Test
     public void 자동차_거리() {
         Car car1 = new Car();
-        assertThat(car1.getDistString()).isEqualTo("");
+        assertThat(car1.getDistance()).isEqualTo(0);
     }
 
     @Test
     public void 자동차_전진() {
         Car car1 = new Car();
         car1.move(4);
-        assertThat(car1.getDistString()).isEqualTo("-");
+        assertThat(car1.getDistance()).isEqualTo(1);
         car1.move(9);
-        assertThat(car1.getDistString()).isEqualTo("--");
+        assertThat(car1.getDistance()).isEqualTo(2);
     }
 
     @Test
@@ -27,7 +27,7 @@ public class CarTest {
         car1.move(0);
         car1.move(1);
 
-        assertThat(car1.getDistString()).isEqualTo("");
+        assertThat(car1.getDistance()).isEqualTo(0);
     }
 
     @Test
