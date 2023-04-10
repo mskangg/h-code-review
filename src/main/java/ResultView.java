@@ -7,9 +7,13 @@ public class ResultView {
     private static final String LAST_LINE = "가 최종 우승했습니다.";
 
     public static void print(RacingGame racingGame) {
+        printRecord(racingGame);
+        printWinners(racingGame);
+    }
+
+    private static void printRecord(RacingGame racingGame) {
         System.out.println(FIRST_LINE);
         System.out.print(racingGame.getRecord());
-        printWinners(racingGame);
     }
 
     private static void printWinners(RacingGame racingGame) {
