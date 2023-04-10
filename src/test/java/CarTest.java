@@ -1,5 +1,7 @@
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import exception.NameLengthException;
 import org.junit.jupiter.api.Test;
 
 public class CarTest {
@@ -26,6 +28,21 @@ public class CarTest {
         car1.move(1);
 
         assertThat(car1.getDistString()).isEqualTo("");
+    }
+
+    @Test
+    public void 자동차_이름부여() {
+        String name = "GV70";
+        Car car1 = new Car(name);
+        assertThat(car1.getName()).isEqualTo(name);
+    }
+
+    @Test
+    public void 자동차_이름길이예외() {
+        String name = "123456";
+        assertThrows(NameLengthException.class, () -> {
+            new Car(name);
+        });
     }
 
 }
