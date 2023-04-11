@@ -1,5 +1,8 @@
+package racingcar.ui;
+
 import java.util.List;
 import java.util.Scanner;
+import racingcar.RacingGame;
 
 public class InputView {
 

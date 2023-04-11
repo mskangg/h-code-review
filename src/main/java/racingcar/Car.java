@@ -1,11 +1,13 @@
-import exception.NameLengthException;
+package racingcar;
+
+import racingcar.exception.NameLengthException;
 
 public class Car implements Comparable<Car> {
 
     public final static String DEFAULT_NAME = "기본이름";
+    public final static int NAME_MAX_LEN = 5;
     private final static int THRESHOLD = 4;
     private final static int INITIAL_DISTANCE = 0;
-    private final static int NAME_MAX_LEN = 5;
     private final Random random;
     private final String name;
     private int distance;
@@ -23,7 +25,7 @@ public class Car implements Comparable<Car> {
 
     private static void validName(String name) {
         if (name.length() > NAME_MAX_LEN) {
-            throw new NameLengthException();
+            throw new NameLengthException(name);
         }
     }
 

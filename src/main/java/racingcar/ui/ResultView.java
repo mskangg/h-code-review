@@ -1,5 +1,6 @@
-import java.util.ArrayList;
-import java.util.List;
+package racingcar.ui;
+
+import racingcar.RacingGame;
 
 public class ResultView {
 
@@ -17,15 +18,7 @@ public class ResultView {
     }
 
     private static void printWinners(RacingGame racingGame) {
-        System.out.print(String.join(", ", getWinnersNameList(racingGame)));
+        System.out.print(String.join(", ", racingGame.findWinners().toNames()));
         System.out.println(LAST_LINE);
-    }
-
-    private static List<String> getWinnersNameList(RacingGame racingGame) {
-        List<String> names = new ArrayList<>();
-        for (Car winner : racingGame.getWinners()) {
-            names.add(winner.getName());
-        }
-        return names;
     }
 }
