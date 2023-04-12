@@ -1,3 +1,5 @@
+package racingcar;
+
 public class Random {
 
     private final static int MAX = 9;
