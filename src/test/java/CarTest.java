@@ -1,7 +1,7 @@
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import racingcar.Car;
+import racingcar.domain.Car;
 import racingcar.exception.NameLengthException;
 import org.junit.jupiter.api.Test;
 

@@ -1,6 +1,6 @@
-package racingcar.ui;
+package racingcar.view;
 
-import racingcar.RacingGame;
+import racingcar.domain.RacingGame;
 
 public class ResultView {
 

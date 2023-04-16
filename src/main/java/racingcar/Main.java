@@ -1,7 +1,8 @@
 package racingcar;
 
-import racingcar.ui.InputView;
-import racingcar.ui.ResultView;
+import racingcar.domain.RacingGame;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
 
 public class Main {
 

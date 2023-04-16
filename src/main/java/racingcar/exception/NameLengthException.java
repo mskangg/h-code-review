@@ -1,6 +1,6 @@
 package racingcar.exception;
 
-import racingcar.Car;
+import racingcar.domain.Car;
 
 public class NameLengthException extends RuntimeException{
     public NameLengthException(String name) {

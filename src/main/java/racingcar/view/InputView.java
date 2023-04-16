@@ -1,8 +1,8 @@
-package racingcar.ui;
+package racingcar.view;
 
 import java.util.List;
 import java.util.Scanner;
-import racingcar.RacingGame;
+import racingcar.domain.RacingGame;
 
 public class InputView {
 
