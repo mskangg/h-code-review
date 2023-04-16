@@ -23,9 +23,7 @@ public class CarRacingGame {
     public void startRacing() {
         IntStream.range(0, tryCount).forEach(count -> {
             racingCar.forEach(car -> {
-                if (CarMovementCalculator.isCarMovement()) {
-                    car.incrementMovement();
-                }
+                car.incrementMovement();
                 racingResult
                         .append(convertCarMovementToString(car.getMovement()))
                         .append(PRINT_LINE);
