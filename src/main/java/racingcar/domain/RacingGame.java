@@ -13,22 +13,22 @@ public class RacingGame {
     private final StringBuilder gameRecord;
     private int remainingMoves;
 
-    public RacingGame(int carCount, int remainingMoves) {
-        this(remainingMoves, Collections.nCopies(carCount, Car.DEFAULT_NAME));
+    public static RacingGame withRandomMoving(int carCount, int remainingMoves) {
+        return withRandomMoving(remainingMoves, Collections.nCopies(carCount, Car.DEFAULT_NAME));
     }
 
-    public RacingGame(int remainingMoves, String... names) {
-        this(remainingMoves, List.of(names));
+    public static RacingGame withRandomMoving(int remainingMoves, List<String> names) {
+        List<Car> cars = new ArrayList<>();
+        for (String name : names) {
+            cars.add(Car.of(name, RandomGenerator.getInstance()));
+        }
+        return new RacingGame(remainingMoves, cars);
     }
 
-    public RacingGame(int remainingMoves, List<String> names) {
+    public RacingGame (int remainingMoves, List<Car> cars) {
         this.remainingMoves = remainingMoves;
         this.gameRecord = new StringBuilder();
-
-        cars = new ArrayList<>();
-        for (String name : names) {
-            cars.add(new Car(name));
-        }
+        this.cars = cars;
     }
 
 
@@ -38,7 +38,7 @@ public class RacingGame {
 
     public void move() {
         for (Car car : cars) {
-            car.moveRandomly();
+            car.move();
         }
     }
 

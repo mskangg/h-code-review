@@ -8,19 +8,19 @@ public class Car implements Comparable<Car> {
     public final static int NAME_MAX_LEN = 5;
     private final static int THRESHOLD = 4;
     private final static int INITIAL_DISTANCE = 0;
-    private final Random random;
+    private final NumberGenerator numberGenerator;
     private final String name;
     private int distance;
 
-    public Car() {
-        this(DEFAULT_NAME);
-    }
-
-    public Car(String name) {
+    private Car(String name, NumberGenerator numberGenerator) {
         validName(name);
         this.name = name;
         this.distance = INITIAL_DISTANCE;
-        this.random = new Random();
+        this.numberGenerator = numberGenerator;
+    }
+
+    public static Car of(String name, NumberGenerator numberGenerator) {
+        return new Car(name, numberGenerator);
     }
 
     private static void validName(String name) {
@@ -29,7 +29,7 @@ public class Car implements Comparable<Car> {
         }
     }
 
-    public void move(int number) {
+    private void pMove(int number) {
         if (number >= THRESHOLD) {
             distance++;
         }
@@ -43,8 +43,8 @@ public class Car implements Comparable<Car> {
         return this.name;
     }
 
-    public void moveRandomly() {
-        move(random.getNumber());
+    public void move() {
+        pMove(numberGenerator.getNumber());
     }
 
     @Override

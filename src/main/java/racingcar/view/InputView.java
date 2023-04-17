@@ -10,7 +10,7 @@ public class InputView {
 
     public static RacingGame newGameByInput() {
         InputData inputData = getInput();
-        return new RacingGame(inputData.getMoveCount(), inputData.getNames());
+        return RacingGame.withRandomMoving(inputData.getMoveCount(), inputData.getNames());
     }
 
     private static InputData getInput() {
