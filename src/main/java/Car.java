@@ -3,16 +3,16 @@ public class Car {
     private static final int MAX_BOUND = 9;
     public static final int MOVABLE_THRESHOLD = 4;
 
+    private final RandomNumberStrategy randomNumberStrategy;
     private int movement;
-    private final RandomUtil randomUtil;
 
-    public Car(int movement, RandomUtil randomUtil) {
+    public Car(int movement, RandomNumberStrategy randomNumberStrategy) {
         this.movement = movement;
-        this.randomUtil = randomUtil;
+        this.randomNumberStrategy = randomNumberStrategy;
     }
 
     public static Car getInstance() {
-        return new Car(0, new DefaultRandomUtil());
+        return new Car(0, new DefaultRandomNumberStrategy());
     }
 
     public void incrementMovement() {
@@ -27,7 +27,7 @@ public class Car {
     }
 
     private boolean isMovable() {
-        return MOVABLE_THRESHOLD < randomUtil.generate(MAX_BOUND);
+        return MOVABLE_THRESHOLD < randomNumberStrategy.generate(MAX_BOUND);
     }
 
 }

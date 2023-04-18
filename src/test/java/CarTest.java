@@ -19,8 +19,8 @@ class CarTest {
     @CsvSource({"1", "10", "5", "0", "7"})
     void test_boundNotRandom_thenAlwaysIncrementMovement(int movement) {
         // 항상 이동하도록 강제 지정한다.
-        RandomUtil randomUtil = bound -> Car.MOVABLE_THRESHOLD + 1;
-        Car car = new Car(0, randomUtil);
+        RandomNumberStrategy randomNumberStrategy = bound -> Car.MOVABLE_THRESHOLD + 1;
+        Car car = new Car(0, randomNumberStrategy);
 
         for (int i = 0; i < movement; i++) {
             car.incrementMovement();

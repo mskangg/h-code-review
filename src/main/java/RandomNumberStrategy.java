@@ -1,10 +1,10 @@
 import java.util.Random;
 
-public interface RandomUtil {
+public interface RandomNumberStrategy {
     int generate(int bound);
 }
 
-class DefaultRandomUtil implements RandomUtil {
+class DefaultRandomNumberStrategy implements RandomNumberStrategy {
 
     private static final Random RANDOM = new Random();
 
