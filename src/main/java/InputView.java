@@ -22,25 +22,25 @@ public class InputView {
         return input.getCarCount();
     }
 
-    public int getTryCount() {
-        return input.getTryCount();
+    public int getTotalLapCount() {
+        return input.getTotalLapCount();
     }
 
     private static class Input {
         private final int carCount;
-        private final int tryCount;
+        private final int totalLapCount;
 
-        private Input(int carCount, int tryCount) {
+        private Input(int carCount, int totalLapCount) {
             this.carCount = carCount;
-            this.tryCount = tryCount;
+            this.totalLapCount = totalLapCount;
         }
 
         private int getCarCount() {
             return carCount;
         }
 
-        private int getTryCount() {
-            return tryCount;
+        private int getTotalLapCount() {
+            return totalLapCount;
         }
     }
 
