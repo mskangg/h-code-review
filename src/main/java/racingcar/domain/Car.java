@@ -12,15 +12,20 @@ public class Car implements Comparable<Car> {
     private final String name;
     private int distance;
 
-    private Car(String name, NumberGenerator numberGenerator) {
+    private Car(NumberGenerator numberGenerator, String name, int distance) {
         validName(name);
-        this.name = name;
-        this.distance = INITIAL_DISTANCE;
+
         this.numberGenerator = numberGenerator;
+        this.name = name;
+        this.distance = distance;
+    }
+
+    public Car() {
+        this(RandomGenerator.getInstance(), DEFAULT_NAME, INITIAL_DISTANCE);
     }
 
     public static Car of(String name, NumberGenerator numberGenerator) {
-        return new Car(name, numberGenerator);
+        return new Car(numberGenerator, name, INITIAL_DISTANCE);
     }
 
     private static void validName(String name) {
