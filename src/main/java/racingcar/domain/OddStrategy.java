@@ -2,13 +2,22 @@ package racingcar.domain;
 
 public class OddStrategy implements MoveStrategy {
 
-    private static final OddStrategy instance = new OddStrategy();
+    private static final int DEFAULT_INCREMENT = 1;
+    private final int increment;
 
-    private OddStrategy() {
+    public OddStrategy() {
+        this(DEFAULT_INCREMENT);
     }
 
-    public static MoveStrategy getInstance() {
-        return instance;
+    public OddStrategy(int increment) {
+        this.increment = increment;
+    }
+
+
+
+    @Override
+    public int increment() {
+        return increment;
     }
 
     @Override

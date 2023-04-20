@@ -53,7 +53,7 @@ public class Car implements Comparable<Car> {
 
     public void move() {
         if (moveStrategy.canMove(numberGenerator.getNumber())) {
-            distance++;
+            distance += moveStrategy.increment();
         }
     }
 
