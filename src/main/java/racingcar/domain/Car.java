@@ -28,6 +28,10 @@ public class Car implements Comparable<Car> {
         return new Car(numberGenerator, name, INITIAL_DISTANCE);
     }
 
+    public static Car of(NumberGenerator numberGenerator) {
+        return new Car(numberGenerator, DEFAULT_NAME, INITIAL_DISTANCE);
+    }
+
     private static void validName(String name) {
         if (name.length() > NAME_MAX_LEN) {
             throw new NameLengthException(name);

@@ -11,8 +11,8 @@ public class CarTest {
 
     @Test
     public void 전진하는_조건은_0에서_9_사이에서_random_값을_구한_후_random_값이_4이상일_경우이다() {
-        Car car1 = Car.of(Car.DEFAULT_NAME, ConstantGenerator.of(3));
-        Car car2 = Car.of(Car.DEFAULT_NAME, ConstantGenerator.of(5));
+        Car car1 = Car.of(ConstantGenerator.of(3));
+        Car car2 = Car.of(ConstantGenerator.of(5));
         car1.move();
         car2.move();
         assertThat(car1.getDistance()).isEqualTo(0);
@@ -21,7 +21,7 @@ public class CarTest {
 
     @Test
     public void 자동차_전진() {
-        Car car1 = Car.of(Car.DEFAULT_NAME, ConstantGenerator.of(9));
+        Car car1 = Car.of(ConstantGenerator.of(9));
         car1.move();
         car1.move();
         assertThat(car1.getDistance()).isEqualTo(2);
@@ -29,7 +29,7 @@ public class CarTest {
 
     @Test
     public void 자동차_멈춤() {
-        Car car1 = Car.of(Car.DEFAULT_NAME, ConstantGenerator.of(0));
+        Car car1 = Car.of(ConstantGenerator.of(0));
         car1.move();
         car1.move();
         assertThat(car1.getDistance()).isEqualTo(0);
