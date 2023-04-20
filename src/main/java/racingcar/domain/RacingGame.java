@@ -6,11 +6,8 @@ import java.util.List;
 
 public class RacingGame {
 
-    public static final char NEW_LINE = '\n';
-    public static final String DELIMITER = " : ";
-    public static final String DISTANCE_CHARACTER = "-";
     private final List<Car> cars;
-    private final StringBuilder gameRecord;
+    private final GameResult gameResult;
     private int remainingMoves;
 
     public static RacingGame withRandomMoving(int carCount, int remainingMoves) {
@@ -27,13 +24,8 @@ public class RacingGame {
 
     public RacingGame (int remainingMoves, List<Car> cars) {
         this.remainingMoves = remainingMoves;
-        this.gameRecord = new StringBuilder();
+        this.gameResult = new GameResult();
         this.cars = cars;
-    }
-
-
-    public String getRecord() {
-        return gameRecord.toString();
     }
 
     public void move() {
@@ -42,24 +34,16 @@ public class RacingGame {
         }
     }
 
-    public void run() {
+    public GameResult run() {
         while (remainingMoves-- > 0) {
             move();
-            record();
+            gameResult.addRound(cars);
         }
+        gameResult.setWinners(findWinners());
+        return gameResult;
     }
 
     public Winners findWinners() {
         return new Winners(cars);
-    }
-
-    private void record() {
-        for (Car car : cars) {
-            gameRecord.append(car.getName())
-                    .append(DELIMITER)
-                    .append(DISTANCE_CHARACTER.repeat(car.getDistance()))
-                    .append(NEW_LINE);
-        }
-        gameRecord.append(NEW_LINE);
     }
 }
