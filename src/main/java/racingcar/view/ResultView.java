@@ -5,9 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import racingcar.domain.GameResult;
-import racingcar.domain.RacingGame;
 
-public class ResultView {
+public class ResultView implements Response{
 
     public static final char NEW_LINE = '\n';
     public static final String DELIMITER = " : ";
@@ -16,7 +15,7 @@ public class ResultView {
     private static final String LAST_LINE = "가 최종 우승했습니다.";
     public static final String COMMA = ", ";
 
-    public static void print(GameResult gameResult) {
+    public void print(GameResult gameResult) {
         System.out.println(FIRST_LINE);
         while(isRemain(gameResult)) {
             printRounds(gameResult);
@@ -25,7 +24,7 @@ public class ResultView {
         System.out.println(LAST_LINE);
     }
 
-    private static void printRounds(GameResult gameResult) {
+    private void printRounds(GameResult gameResult) {
         StringBuilder stringBuilder = new StringBuilder();
         Map<String, LinkedList<Integer>> roundResults = gameResult.getRoundResults();
         for (String name : roundResults.keySet()) {
@@ -39,7 +38,7 @@ public class ResultView {
         System.out.print(stringBuilder);
     }
 
-    private static boolean isRemain(GameResult gameResult) {
+    private boolean isRemain(GameResult gameResult) {
         Collection<LinkedList<Integer>> records = gameResult.getRoundResults().values();
         List<Integer> record = records.stream().findFirst().get();
         return !record.isEmpty();

@@ -4,16 +4,16 @@ import java.util.List;
 import java.util.Scanner;
 import racingcar.domain.RacingGame;
 
-public class InputView {
+public class InputView implements Request{
 
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static RacingGame newGameByInput() {
+    public RacingGame newGame() {
         InputData inputData = getInput();
         return RacingGame.withRandomMoving(inputData.getMoveCount(), inputData.getNames());
     }
 
-    private static InputData getInput() {
+    private InputData getInput() {
         System.out.println("경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분).");
         List<String> names = List.of(scanner.nextLine().split(","));
 
