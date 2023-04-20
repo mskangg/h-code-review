@@ -6,41 +6,40 @@ public class Car implements Comparable<Car> {
 
     public final static String DEFAULT_NAME = "기본이름";
     public final static int NAME_MAX_LEN = 5;
-    private final static int THRESHOLD = 4;
     private final static int INITIAL_DISTANCE = 0;
     private final NumberGenerator numberGenerator;
+    private final MoveStrategy moveStrategy;
     private final String name;
     private int distance;
 
-    private Car(NumberGenerator numberGenerator, String name, int distance) {
+    private Car(NumberGenerator numberGenerator, MoveStrategy moveStrategy, String name, int distance) {
         validName(name);
 
         this.numberGenerator = numberGenerator;
+        this.moveStrategy = moveStrategy;
         this.name = name;
         this.distance = distance;
     }
 
     public Car() {
-        this(RandomGenerator.getInstance(), DEFAULT_NAME, INITIAL_DISTANCE);
+        this(RandomGenerator.getInstance(), new ThresholdStrategy(), DEFAULT_NAME, INITIAL_DISTANCE);
     }
 
     public Car(String name, NumberGenerator numberGenerator) {
-        this(numberGenerator, name, INITIAL_DISTANCE);
+        this(numberGenerator, new ThresholdStrategy(), name, INITIAL_DISTANCE);
     }
 
     public Car(NumberGenerator numberGenerator) {
-        this(numberGenerator, DEFAULT_NAME, INITIAL_DISTANCE);
+        this(numberGenerator, new ThresholdStrategy(), DEFAULT_NAME, INITIAL_DISTANCE);
+    }
+
+    public Car(NumberGenerator numberGenerator, MoveStrategy moveStrategy) {
+        this(numberGenerator, moveStrategy, DEFAULT_NAME, INITIAL_DISTANCE);
     }
 
     private static void validName(String name) {
         if (name.length() > NAME_MAX_LEN) {
             throw new NameLengthException(name);
-        }
-    }
-
-    private void pMove(int number) {
-        if (number >= THRESHOLD) {
-            distance++;
         }
     }
 
@@ -53,7 +52,9 @@ public class Car implements Comparable<Car> {
     }
 
     public void move() {
-        pMove(numberGenerator.getNumber());
+        if (moveStrategy.canMove(numberGenerator.getNumber())) {
+            distance++;
+        }
     }
 
     @Override

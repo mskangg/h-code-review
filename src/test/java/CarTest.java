@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import racingcar.domain.Car;
 import racingcar.domain.ConstantGenerator;
+import racingcar.domain.OddStrategy;
 import racingcar.domain.RandomGenerator;
 import racingcar.exception.NameLengthException;
 import org.junit.jupiter.api.Test;
@@ -52,7 +53,7 @@ public class CarTest {
 
     @Test
     public void 홀수일_때_전진한다() {
-        Car car1 = new Car(ConstantGenerator.of(3));
+        Car car1 = new Car(ConstantGenerator.of(3), OddStrategy.getInstance());
         car1.move();
         assertThat(car1.getDistance()).isEqualTo(1);
     }
