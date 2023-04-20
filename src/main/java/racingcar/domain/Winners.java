@@ -9,9 +9,9 @@ public class Winners {
 
     public Winners(List<Car> cars) {
         this.winners = new ArrayList<>();
-        int maxDistance = Collections.max(cars).getDistance();
+        Car maxCar = Collections.max(cars);
         for (Car car : cars) {
-            addWinner(car, maxDistance);
+            addWinner(car, maxCar);
         }
     }
 
@@ -23,8 +23,8 @@ public class Winners {
         return names;
     }
 
-    private void addWinner(Car car, int maxDistance) {
-        if (car.getDistance() == maxDistance) {
+    private void addWinner(Car car, Car maxCar) {
+        if (car.isMax(maxCar)) {
             winners.add(car);
         }
     }

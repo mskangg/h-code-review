@@ -56,4 +56,8 @@ public class Car implements Comparable<Car> {
     public int compareTo(Car o) {
         return Integer.compare(this.distance, o.distance);
     }
+
+    public boolean isMax(Car maxCar) {
+        return this.compareTo(maxCar) == 0;
+    }
 }
