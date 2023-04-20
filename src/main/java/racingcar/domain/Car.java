@@ -24,12 +24,12 @@ public class Car implements Comparable<Car> {
         this(RandomGenerator.getInstance(), DEFAULT_NAME, INITIAL_DISTANCE);
     }
 
-    public static Car of(String name, NumberGenerator numberGenerator) {
-        return new Car(numberGenerator, name, INITIAL_DISTANCE);
+    public Car(String name, NumberGenerator numberGenerator) {
+        this(numberGenerator, name, INITIAL_DISTANCE);
     }
 
-    public static Car of(NumberGenerator numberGenerator) {
-        return new Car(numberGenerator, DEFAULT_NAME, INITIAL_DISTANCE);
+    public Car(NumberGenerator numberGenerator) {
+        this(numberGenerator, DEFAULT_NAME, INITIAL_DISTANCE);
     }
 
     private static void validName(String name) {

@@ -20,7 +20,7 @@ public class RacingGame {
     public static RacingGame withRandomMoving(int remainingMoves, List<String> names) {
         List<Car> cars = new ArrayList<>();
         for (String name : names) {
-            cars.add(Car.of(name, RandomGenerator.getInstance()));
+            cars.add(new Car(name, RandomGenerator.getInstance()));
         }
         return new RacingGame(remainingMoves, cars);
     }

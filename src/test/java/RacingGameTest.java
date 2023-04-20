@@ -32,8 +32,8 @@ public class RacingGameTest {
     @Test
     public void 누가_우승했는지를_알려준다() {
         List<Car> cars = new ArrayList<>();
-        cars.add(Car.of("G70", ConstantGenerator.of(3)));
-        cars.add(Car.of("G90", ConstantGenerator.of(9)));
+        cars.add(new Car("G70", ConstantGenerator.of(3)));
+        cars.add(new Car("G90", ConstantGenerator.of(9)));
         RacingGame racingGame = new RacingGame(3, cars);
         racingGame.run();
         assertThat(racingGame.findWinners().toNames())
