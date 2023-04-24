@@ -1,3 +1,7 @@
+package view;
+
+import domain.Car;
+
 public class ResultCar {
 
     private static final String MOVEMENT_PRINT_CHARACTER = "-";
