@@ -1,7 +1,6 @@
 package domain;
 
-import view.ResultCar;
-
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -22,17 +21,16 @@ public class CarRacingGame {
         return new CarRacingGame(generateRacingCars(carCount), tryCount);
     }
 
-    public List<ResultCar> racing() {
+    public List<Car> racing() {
         if (!isRacingContinue()) {
             throw new RuntimeException("경주가 종료되었습니다");
         }
 
         gameLapCount++;
-        return racingCar.stream().map(car -> {
-                    car.incrementMovement();
-                    return ResultCar.of(car);
-                })
-                .collect(Collectors.toList());
+        for (Car car : racingCar) {
+            car.incrementMovement();
+        }
+        return Collections.unmodifiableList(racingCar);
     }
 
     public boolean isRacingContinue() {

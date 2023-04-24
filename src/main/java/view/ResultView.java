@@ -1,10 +1,13 @@
 package view;
 
+import domain.Car;
+
 import java.util.List;
 
 public class ResultView {
 
     private static final String PRINT_LINE = "\n";
+    private static final String MOVEMENT_PRINT_CHARACTER = "-";
 
     private final StringBuilder resultBuilder = new StringBuilder();
 
@@ -21,14 +24,18 @@ public class ResultView {
         resultBuilder.setLength(0);
     }
 
-    public void appendResult(List<ResultCar> racingCar) {
-        for (ResultCar resultCar : racingCar) {
+    public void appendResult(List<Car> racingCar) {
+        for (Car car : racingCar) {
             resultBuilder
-                    .append(resultCar.getMovementToString())
+                    .append(getMovementToString(car.getMovement()))
                     .append(PRINT_LINE);
         }
         resultBuilder
                 .append(PRINT_LINE);
+    }
+
+    private static String getMovementToString(int movement) {
+        return MOVEMENT_PRINT_CHARACTER.repeat(Math.max(0, movement));
     }
 
 }
