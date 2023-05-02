@@ -1,18 +1,15 @@
-import domain.CarRacingGame;
-import view.InputView;
-import view.ResultView;
+import controller.CarRacingController;
+import view.request.CarRacingGameRequest;
+import view.result.CarRacingGameResponse;
 
 public class CarRacingGameApplication {
 
     public static void main(String[] args) {
-        InputView inputView = InputView.createInputView();
-        CarRacingGame carRacingGame = CarRacingGame.createRacing(inputView.getCarCount(), inputView.getTotalLapCount());
+        CarRacingController controller = new CarRacingController(
+                new CarRacingGameRequest(), new CarRacingGameResponse());
 
-        ResultView resultView = ResultView.createResultView();
-        while (carRacingGame.isRacingContinue()) {
-            resultView.appendResult(carRacingGame.racing());
-        }
-        resultView.printResult();
+        // trace-off : 애플리케이션의 실제 역할은 '실행 가능한 상태까지' 만 이다.
+        controller.run();
     }
 
 }

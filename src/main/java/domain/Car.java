@@ -1,6 +1,6 @@
 package domain;
 
-public class Car {
+public class Car implements Cloneable {
 
     private static final int MAX_BOUND = 9;
     public static final int MOVABLE_THRESHOLD = 4;
@@ -32,4 +32,12 @@ public class Car {
         return MOVABLE_THRESHOLD < randomNumberStrategy.generate(MAX_BOUND);
     }
 
+    @Override
+    protected Car clone() {
+        try {
+            return (Car) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
 }

@@ -1,49 +1,42 @@
-package view;
+package view.request;
 
 import java.util.Scanner;
 
-public class InputView {
+public class CarRacingGameRequest implements ConsoleRequest {
 
-    private final Input input;
+    private GameInput gameInput;
 
-    private InputView(Input input) {
-        this.input = input;
-    }
-
-    public static InputView createInputView() {
+    @Override
+    public void prompt() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("자동차 대수는 몇 대 인가요?");
         int carCount = scanner.nextInt();
         System.out.println("시도할 회수는 몇 회 인가요?");
         int tryCount = scanner.nextInt();
 
-        return new InputView(new Input(carCount, tryCount));
+        gameInput = new GameInput(carCount, tryCount);
     }
 
-    public int getCarCount() {
-        return input.getCarCount();
+    @Override
+    public GameInput retrieve() {
+        return gameInput;
     }
 
-    public int getTotalLapCount() {
-        return input.getTotalLapCount();
-    }
-
-    private static class Input {
+    public static class GameInput {
         private final int carCount;
         private final int totalLapCount;
 
-        private Input(int carCount, int totalLapCount) {
+        private GameInput(int carCount, int totalLapCount) {
             this.carCount = carCount;
             this.totalLapCount = totalLapCount;
         }
 
-        private int getCarCount() {
+        public int getCarCount() {
             return carCount;
         }
 
-        private int getTotalLapCount() {
+        public int getTotalLapCount() {
             return totalLapCount;
         }
     }
-
 }
