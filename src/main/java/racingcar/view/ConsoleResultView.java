@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import racingcar.domain.GameResult;
 
-public class ResultView implements Response{
+public class ConsoleResultView implements Response {
 
     public static final char NEW_LINE = '\n';
     public static final String DELIMITER = " : ";
@@ -17,7 +17,7 @@ public class ResultView implements Response{
 
     public void print(GameResult gameResult) {
         System.out.println(FIRST_LINE);
-        while(isRemain(gameResult)) {
+        while (isRemain(gameResult)) {
             printRounds(gameResult);
         }
         System.out.print(String.join(COMMA, gameResult.getWinners().toNames()));

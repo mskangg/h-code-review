@@ -2,13 +2,14 @@ package racingcar.controller;
 
 import racingcar.domain.GameResult;
 import racingcar.domain.RacingGame;
+import racingcar.view.InputData;
 import racingcar.view.Request;
 import racingcar.view.Response;
 
 public class Controller {
 
-    private Request request;
-    private Response response;
+    private final Request request;
+    private final Response response;
 
     public Controller(Request request, Response response) {
         this.request = request;
@@ -16,8 +17,11 @@ public class Controller {
     }
 
     public void run() {
-        RacingGame racingGame = request.newGame();
+        InputData inputData = request.getInput();
+
+        RacingGame racingGame = inputData.toRacingGame();
         GameResult gameResult = racingGame.run();
+
         response.print(gameResult);
     }
 }
