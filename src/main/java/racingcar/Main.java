@@ -1,13 +1,13 @@
 package racingcar;
 
-import racingcar.ui.InputView;
-import racingcar.ui.ResultView;
+import racingcar.controller.Controller;
+import racingcar.view.ConsoleInputView;
+import racingcar.view.ConsoleResultView;
 
 public class Main {
 
     public static void main(String[] args) {
-        RacingGame racingGame = InputView.newGameByInput();
-        racingGame.run();
-        ResultView.print(racingGame);
+        Controller controller = new Controller(new ConsoleInputView(), new ConsoleResultView());
+        controller.run();
     }
 }

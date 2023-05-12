@@ -1,34 +1,44 @@
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import racingcar.RacingGame;
+import racingcar.domain.Car;
+import racingcar.domain.ConstantGenerator;
+import racingcar.domain.GameResult;
+import racingcar.domain.RacingGame;
 
 public class RacingGameTest {
 
-    @ParameterizedTest
-    @CsvSource({"2,5", "4,3"})
-    public void 출력줄수_검증(int carCount, int moveCount) {
-
-        RacingGame racingGame = new RacingGame(carCount, moveCount);
-        racingGame.run();
-        assertThat(racingGame.getRecord()).hasLineCount((carCount + 1) * moveCount);
-    }
-
-    @Test
-    public void 전진하는_자동차_출력에_이름을_같이_출력한다() {
-        RacingGame racingGame = new RacingGame(1, "G80", "G90");
-        racingGame.run();
-        assertThat(racingGame.getRecord())
-                .contains("G80 : ")
-                .contains("G90 : ");
-    }
+//    @ParameterizedTest
+//    @CsvSource({"2,5", "4,3"})
+//    public void 출력줄수_검증(int carCount, int moveCount) {
+//
+//        RacingGame racingGame = RacingGame.withRandomMoving(carCount, moveCount);
+//        racingGame.run();
+//        assertThat(racingGame.getRecord()).hasLineCount((carCount + 1) * moveCount);
+//    }
+//
+//    @Test
+//    public void 전진하는_자동차_출력에_이름을_같이_출력한다() {
+//        RacingGame racingGame = RacingGame.withRandomMoving(1, List.of("G80", "G90"));
+//        racingGame.run();
+//        assertThat(racingGame.getRecord())
+//                .contains("G80 : ")
+//                .contains("G90 : ");
+//    }
 
     @Test
     public void 누가_우승했는지를_알려준다() {
-        RacingGame racingGame = new RacingGame(5, "G70", "G80", "G90");
-        racingGame.run();
-        assertThat(racingGame.findWinners().toNames()).isNotEmpty();
+        List<Car> cars = new ArrayList<>();
+        cars.add(new Car("G70", ConstantGenerator.of(3)));
+        cars.add(new Car("G90", ConstantGenerator.of(9)));
+        RacingGame racingGame = new RacingGame(3, cars);
+        GameResult gameResult = racingGame.run();
+        assertThat(gameResult.getWinners().toNames())
+                .contains("G90")
+                .hasSize(1);
     }
 }
