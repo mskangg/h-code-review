@@ -10,10 +10,8 @@ import java.util.stream.IntStream;
 public class CarRacingGame {
 
     private final List<Car> racingCar;
-    private final int totalLapCount;
     private final RacingReport racingReport;
-
-    private int gameLapCount = 0;
+    private int totalLapCount;
 
     private CarRacingGame(List<Car> racingCar, int totalLapCount) {
         this.racingCar = racingCar;
@@ -26,25 +24,21 @@ public class CarRacingGame {
     }
 
     public void racing() {
-        if (!isRacingContinue()) {
-            return;
+        while (totalLapCount-- > 0) {
+            moveCar();
+            racingReport.put(totalLapCount, clone(racingCar));
+            racing();
         }
-
-        for (Car car : racingCar) {
-            car.incrementMovement();
-        }
-        gameLapCount++;
-        racingReport.put(gameLapCount, clone(racingCar));
-
-        racing();
     }
 
     public RacingReport getRacingReport() {
         return racingReport;
     }
 
-    private boolean isRacingContinue() {
-        return gameLapCount < totalLapCount;
+    private void moveCar() {
+        for (Car car : racingCar) {
+            car.incrementMovement();
+        }
     }
 
     private static List<Car> generateRacingCars(int carCount) {
