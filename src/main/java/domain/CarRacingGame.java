@@ -19,8 +19,8 @@ public class CarRacingGame {
         this.racingReport = new RacingReport();
     }
 
-    public static CarRacingGame createRacing(int carCount, int tryCount) {
-        return new CarRacingGame(generateRacingCars(carCount), tryCount);
+    public static CarRacingGame createRacing(int carCount, int totalLapCount) {
+        return new CarRacingGame(generateRacingCars(carCount), totalLapCount);
     }
 
     public void racing() {
