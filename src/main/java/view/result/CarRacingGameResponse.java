@@ -6,14 +6,13 @@ import domain.CarRacingGame;
 import java.util.List;
 import java.util.Map;
 
-public class CarRacingGameResponse implements ConsoleResponse<CarRacingGame.RacingReport> {
+public class CarRacingGameResponse {
 
     private static final String PRINT_LINE = "\n";
     private static final String MOVEMENT_PRINT_CHARACTER = "-";
 
     private final StringBuilder resultBuilder = new StringBuilder();
-
-    @Override
+    
     public void print(CarRacingGame.RacingReport racingReport) {
         makeResult(racingReport);
         System.out.println("실행 결과");

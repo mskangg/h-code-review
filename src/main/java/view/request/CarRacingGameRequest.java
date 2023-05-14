@@ -2,11 +2,10 @@ package view.request;
 
 import java.util.Scanner;
 
-public class CarRacingGameRequest implements ConsoleRequest {
+public class CarRacingGameRequest {
 
     private GameInput gameInput;
 
-    @Override
     public void prompt() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("자동차 대수는 몇 대 인가요?");
@@ -16,8 +15,7 @@ public class CarRacingGameRequest implements ConsoleRequest {
 
         gameInput = new GameInput(carCount, tryCount);
     }
-
-    @Override
+    
     public GameInput retrieve() {
         return gameInput;
     }
